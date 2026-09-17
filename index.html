@@ -12,6 +12,7 @@
   // separately from Minutes even though it shares Minutes' generation engine and every
   // shared file. Bump this by hand alongside README-DELIVERY notes for this app, the same
   // way Simple Minutes' own SIMPLE_MINUTES_VERSION is maintained.
+  // 1.0.0, 2026-09-16: first public release.
   var SIMPLE_COMPILE_VERSION = "1.0.0";
 </script>
 <script>
@@ -152,6 +153,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8a2e2e" stroke-width="2"><polygon points="12,2 22,12 12,22 2,12"/></svg>
       </span>
       <h1>Simple Compile</h1>
+      <a href="instructions.html" style="margin-left:auto; font-size:12.5px; font-weight:600; color:var(--ink-soft); text-decoration:none;">Instructions</a>
     </div>
     <p class="tagline">Open a Simple Minutes (or Minutes) CSV export and get readable minutes back — Minutes Maker prose, an SHMHA Minutes Book submission, or a terse Simple List — ready to copy, paste, and email. No editing, no saved project: open a file, get your text, done.</p>
     <p class="backlink">Need to fix a name, reorder songs, or manage tunebook sources first? Whatever file you open here — a Simple Minutes export or a Master CSV — opens the same way in the full <a href="https://singlouddotorg.github.io/minutes/" target="_blank" rel="noopener">Minutes</a> app too.</p>
@@ -694,7 +696,12 @@
   // Shared version identifiers — kept as simple constants for now so both apps' footers
   // can display them consistently; a good candidate to pull into one shared config file
   // once the suite has a common build step.
-  var EZ_MINUTES_SUITE_VERSION = (typeof window !== "undefined" && window.__ezMinutesWrapperVersion) || EZMinutesShared.SUITE_VERSION; // Always the wrapper's own real version now - see the note at SUITE_VERSION's own declaration for why this used to drift.
+  // Simple Compile runs standalone - Minutes' own wrapper script (which sets
+  // window.__ezMinutesWrapperVersion) never runs here, so that first branch never fires in
+  // this app. The real source, in this context, is EZMinutesVersion.VERSION - already
+  // loaded via minutes-version.js's own <script> tag above. ("unknown" is a last-resort
+  // fallback only, never expected to actually show.)
+  var EZ_MINUTES_SUITE_VERSION = (typeof window !== "undefined" && window.__ezMinutesWrapperVersion) || (typeof EZMinutesVersion !== "undefined" && EZMinutesVersion.VERSION) || "unknown";
   var KNOWN_CAPTURE_SCHEMA_VERSIONS = ["1", "2", "3", "4", "5"];
 
   // ---------------- narrative/text-parsing constants, deliberately placed early ----------------

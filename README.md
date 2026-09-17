@@ -1,5 +1,7 @@
 # Simple Compile
 
+**Version 1.0** — a stable, released app.
+
 A one-page, no-editing version of Minutes: open a CSV, get readable minutes back. No Setup,
 no Capture, no Song List to fix up, no saved project — open a file, read the output, copy or
 share it, done.
@@ -9,13 +11,13 @@ uses. Nothing to install, no server, no build step.
 
 ## Part of the Sing Loud Suite
 
-| App | What it does |
-|---|---|
-| [**Minutes**](https://github.com/singlouddotorg/minutes) | Log a singing as it happens, then turn that log into publishable minutes — with full editing. |
-| [**Tunebooks**](https://github.com/singlouddotorg/tunebooks) | Curate the shared tunebook data — editions, page indexes, Level 3 scholarly files. |
-| [**Simple Minutes**](https://github.com/singlouddotorg/simple-minutes) | A phone-sized logger: page numbers only, no names. Its files import straight into Minutes and Simple Compile. |
-| **Simple Compile** | This app. |
-| [**Tunebook Registry**](https://github.com/singlouddotorg/tunebook-registry) | The published tunebook data the others read. |
+| App | What it does | Status |
+|---|---|---|
+| [**Minutes**](https://github.com/singlouddotorg/minutes) | Log a singing as it happens, then turn that log into publishable minutes — with full editing. | Beta |
+| [**Tunebooks**](https://github.com/singlouddotorg/tunebooks) | Curate the shared tunebook data — editions, page indexes, Level 3 scholarly files. | Beta |
+| [**Simple Minutes**](https://github.com/singlouddotorg/simple-minutes) | A phone-sized logger: page numbers only, no names. Its files import straight into Minutes and Simple Compile. | 1.0 release |
+| **Simple Compile** | This app. | 1.0 release |
+| [**Tunebook Registry**](https://github.com/singlouddotorg/tunebook-registry) | The published tunebook data the others read. | 1.0 release |
 
 ## What it is for
 
