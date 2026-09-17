@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple Compile :: Instructions</title>
+<title>Compile :: Instructions</title>
 <!-- Deliberately no external fonts or CDN scripts — everything on this page works fully
      offline, same as the app itself. Palette and brand mark match simple-compile.html
      exactly (--oxblood, --paper/--paper-dark, the four-shape mark). -->
@@ -64,16 +64,16 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8a2e2e" stroke-width="2"><rect x="4" y="4" width="16" height="16"/></svg>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8a2e2e" stroke-width="2"><polygon points="12,2 22,12 12,22 2,12"/></svg>
     </span>
-    <h1>Simple Compile</h1>
+    <h1>Compile</h1>
   </div>
-  <nav class="suite-nav"><a href="index.html">&larr; Back to Simple Compile</a></nav>
+  <nav class="suite-nav"><a href="index.html">&larr; Back to Compile</a></nav>
 
-  <p class="intro">Open a Simple Minutes or Minutes file, pick the kind of output you need, and copy or share the result. There's no editing here on purpose — this page covers everything the app actually does, plus a few options worth knowing about.</p>
+  <p class="intro">Open a Capture or Minutes file, pick the kind of output you need, and copy or share the result. There's no editing here on purpose — this page covers everything the app actually does, plus a few options worth knowing about.</p>
 
   <h2>Quick Start</h2>
   <div class="card">
     <ol>
-      <li>Open <code>index.html</code> and drop in a CSV — a Simple Minutes export, or a Master CSV from Minutes.</li>
+      <li>Open <code>index.html</code> and drop in a CSV — a Capture export, or a Master CSV from Minutes.</li>
       <li>Pick the type of output: <strong>Minutes Maker</strong>, <strong>Simple List</strong>, or <strong>SHMHA Minutes Book</strong>.</li>
       <li>Adjust whichever options matter for that output.</li>
       <li><strong>Copy to clipboard</strong>, or tap <strong>Share</strong> to hand the text to Mail, Messages, Notes, or whatever the device offers.</li>
@@ -82,9 +82,9 @@
 
   <h2>1. Open a File</h2>
   <ul>
-    <li>Click to choose a file, or drop a CSV onto the page — either a file exported from <a href="https://github.com/singlouddotorg/Simple-Minutes" target="_blank" rel="noopener">Simple Minutes</a>, or a Master CSV from the full <a href="https://github.com/singlouddotorg/minutes" target="_blank" rel="noopener">Minutes</a> app.</li>
+    <li>Click to choose a file, or drop a CSV onto the page — either a file exported from <a href="https://github.com/singlouddotorg/Simple-Minutes" target="_blank" rel="noopener">Capture</a>, or a Master CSV from the full <a href="https://github.com/singlouddotorg/Secretary" target="_blank" rel="noopener">Minutes</a> app.</li>
     <li>Opening a second file replaces the first outright — with a confirmation if the first one had real content already showing. Refreshing the page starts completely clean; nothing carries over between visits.</li>
-    <li>A file with no leader names at all (Simple Minutes' everyday output) is detected automatically, and <strong>"This singing's minutes don't name individual leaders"</strong> is checked for you. If a file has names on <em>some</em> songs but you still want them all left out, tick this by hand.</li>
+    <li>A file with no leader names at all (Capture's everyday output) is detected automatically, and <strong>"This singing's minutes don't name individual leaders"</strong> is checked for you. If a file has names on <em>some</em> songs but you still want them all left out, tick this by hand.</li>
   </ul>
   <div class="note">Checking "no names" also simplifies the options below it: the SHMHA Minutes Book button and the Wording &amp; Presentation section both disappear, since neither applies to a leaderless log. If SHMHA was already selected when you check it, the output switches back to Minutes Maker automatically.</div>
 
@@ -102,7 +102,7 @@
     <li><strong>Per-song book identifier style</strong> — SingLoud work code, SHMHA code, or the book's Title Proper. This same choice also controls the wording of the opening "name every book" sentence (Title Proper switches its verb from "are marked" to "come from," since there's no code left to mark anything with).</li>
     <li><strong>Include a song index at the end</strong> — every page number used, grouped by tunebook (or titles, for anything logged as "Other").</li>
     <li><strong>Name the default tunebook edition near the opening</strong> — e.g. "Song selections were from The Sacred Harp: 1991 Edition."</li>
-    <li><strong>Show edition for The Sacred Harp</strong> — spells out "The Sacred Harp: 2025 Edition" rather than the shorter "The Sacred Harp" alone, since both the 1991 and 2025 editions are still in common use. Every other book is unaffected. The same option exists in the full <a href="https://github.com/singlouddotorg/minutes" target="_blank" rel="noopener">Minutes</a> app; Simple Minutes doesn't carry it, by design.</li>
+    <li><strong>Show edition for The Sacred Harp</strong> — spells out "The Sacred Harp: 2025 Edition" rather than the shorter "The Sacred Harp" alone, since both the 1991 and 2025 editions are still in common use. Every other book is unaffected. The same option exists in the full <a href="https://github.com/singlouddotorg/Secretary" target="_blank" rel="noopener">Minutes</a> app; Capture doesn't carry it, by design.</li>
   </ul>
 
   <h3>Simple List options</h3>
@@ -122,20 +122,20 @@
     <li><strong>Copy to clipboard</strong> always works. <strong>Share</strong> hands the same text straight to Mail, Messages, Notes, or whatever the device offers, and is hidden automatically on a browser that doesn't support sharing.</li>
     <li>Optional: tick <strong>add a line crediting SingLoud.org at the bottom</strong> if you'd like the output to say where it came from.</li>
   </ul>
-  <div class="note">Every other app in this suite writes files. Simple Compile deliberately doesn't — the point was always "copy, paste, email," not producing another file to manage, so there's no download grid of formats here. If a finished CSV needs to be kept as a record, keep the original file you opened; Simple Compile is a one-way read of it, not a place to store it.</div>
+  <div class="note">Every other app in this suite writes files. Compile deliberately doesn't — the point was always "copy, paste, email," not producing another file to manage, so there's no download grid of formats here. If a finished CSV needs to be kept as a record, keep the original file you opened; Compile is a one-way read of it, not a place to store it.</div>
 
   <h2>If Something Needs Fixing</h2>
-  <p>Simple Compile has no editing surface at all — no Song List to correct, no book-source management, no saved project. If a file genuinely needs a name fixed, a page corrected, or a book source assigned, open it in the full <a href="https://github.com/singlouddotorg/minutes" target="_blank" rel="noopener">Minutes</a> app instead. The file you opened here is never changed by anything on this page, so it's still exactly as it was if you need to take it there.</p>
+  <p>Compile has no editing surface at all — no Song List to correct, no book-source management, no saved project. If a file genuinely needs a name fixed, a page corrected, or a book source assigned, open it in the full <a href="https://github.com/singlouddotorg/Secretary" target="_blank" rel="noopener">Minutes</a> app instead. The file you opened here is never changed by anything on this page, so it's still exactly as it was if you need to take it there.</p>
 
   <h2>Nothing Is Saved, Nothing Is Uploaded</h2>
-  <p>Simple Compile keeps no project between visits and writes nothing to browser storage in either direction. No file, and no part of the minutes it generates, is ever sent anywhere — everything happens in the browser; Copy and Share hand text to the operating system, not to a server.</p>
+  <p>Compile keeps no project between visits and writes nothing to browser storage in either direction. No file, and no part of the minutes it generates, is ever sent anywhere — everything happens in the browser; Copy and Share hand text to the operating system, not to a server.</p>
 
   <h2>Where the Songbook Data Comes From</h2>
   <p><code>tunebook-library.js</code> ships bundled right beside <code>index.html</code>, exactly like every other app in this suite — read strictly as data, never executed as code.</p>
 
   <h2>Troubleshooting</h2>
   <h3>A file won't import, or imports with almost nothing recognized</h3>
-  <p>Simple Compile shares the full Minutes app's own import logic, which is tolerant: it matches columns by name and recognizes several older or alternate column names. If a file truly imports with nothing usable, check that it has at least a Leader/Caller, Page, or Notes column under some name it recognizes.</p>
+  <p>Compile shares the full Minutes app's own import logic, which is tolerant: it matches columns by name and recognizes several older or alternate column names. If a file truly imports with nothing usable, check that it has at least a Leader/Caller, Page, or Notes column under some name it recognizes.</p>
   <h3>SHMHA Minutes Book isn't showing as an option</h3>
   <p>Check whether "no names" is ticked — that output type is hidden for leaderless files, since SHMHA's own format assumes named leaders. Uncheck it if this file should genuinely show names.</p>
   <h3>The preview doesn't match what I expected</h3>
@@ -143,14 +143,14 @@
   <h3>A book's code shows as an em dash</h3>
   <p>That's deliberate — it means this book genuinely has no SHMHA code on file, not that something went wrong. It's the same placeholder the Simple List's own SHMHA column uses for the same case.</p>
   <h3>I need to correct something in the file</h3>
-  <p>Open it in the full <a href="https://github.com/singlouddotorg/minutes" target="_blank" rel="noopener">Minutes</a> app instead — Simple Compile has no editing surface by design.</p>
+  <p>Open it in the full <a href="https://github.com/singlouddotorg/Secretary" target="_blank" rel="noopener">Minutes</a> app instead — Compile has no editing surface by design.</p>
 
   <h2>Version</h2>
   <!-- Simple Compile's own SIMPLE_COMPILE_VERSION constant lives inline in
        simple-compile.html, not a separate version file, so this can't script-import it
        live the way the top-level Minutes instructions page does. Update this line by hand
        when that constant changes. -->
-  <p>Simple Compile &middot; Version 1.0.1</p>
+  <p>SingLoud.org Shape-Note Simple Secretary: Compile &middot; Version 1.0.2</p>
 
   <footer>
     <a href="index.html">Home</a>

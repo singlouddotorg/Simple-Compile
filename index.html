@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple Compile</title>
+<title>Compile</title>
 <script src="tunebook-library.js"></script>
 <script src="shared-utils.js"></script>
 <script src="minutes-version.js"></script>
@@ -13,7 +13,7 @@
   // shared file. Bump this by hand alongside README-DELIVERY notes for this app, the same
   // way Simple Minutes' own SIMPLE_MINUTES_VERSION is maintained.
   // 1.0.0, 2026-09-16: first public release.
-  var SIMPLE_COMPILE_VERSION = "1.0.1";
+  var SIMPLE_COMPILE_VERSION = "1.0.2";
 </script>
 <script>
   // Derived from the Tunebook Library rather than loaded directly, matching every other
@@ -152,16 +152,16 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8a2e2e" stroke-width="2"><rect x="4" y="4" width="16" height="16"/></svg>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8a2e2e" stroke-width="2"><polygon points="12,2 22,12 12,22 2,12"/></svg>
       </span>
-      <h1>Simple Compile</h1>
+      <h1>Compile</h1>
       <a href="instructions.html" style="margin-left:auto; font-size:12.5px; font-weight:600; color:var(--ink-soft); text-decoration:none;">Instructions</a>
     </div>
-    <p class="tagline">Open a Simple Minutes (or Minutes) CSV export and get readable minutes back — Minutes Maker prose, an SHMHA Minutes Book submission, or a terse Simple List — ready to copy, paste, and email. No editing, no saved project: open a file, get your text, done.</p>
-    <p class="backlink">Need to fix a name, reorder songs, or manage tunebook sources first? Whatever file you open here — a Simple Minutes export or a Master CSV — opens the same way in the full <a href="https://singlouddotorg.github.io/minutes/" target="_blank" rel="noopener">Minutes</a> app too.</p>
+    <p class="tagline">Open a Capture (or Minutes) CSV export and get readable minutes back — Minutes Maker prose, an SHMHA Minutes Book submission, or a terse Simple List — ready to copy, paste, and email. No editing, no saved project: open a file, get your text, done.</p>
+    <p class="backlink">Need to fix a name, reorder songs, or manage tunebook sources first? Whatever file you open here — a Capture export or a Master CSV — opens the same way in the full <a href="https://singlouddotorg.github.io/minutes/" target="_blank" rel="noopener">Minutes</a> app too.</p>
   </header>
 
   <div class="card">
     <h2 class="card-title">1. Open a file</h2>
-    <p class="card-desc">A Master CSV from Minutes, or a CSV exported directly from Simple Minutes — leaderless files work exactly as they're meant to here.</p>
+    <p class="card-desc">A Master CSV from Minutes, or a CSV exported directly from Capture — leaderless files work exactly as they're meant to here.</p>
     <div class="file-drop" id="fileDrop">
       <p><strong>Click to choose a file</strong> or drop a CSV here.</p>
       <input type="file" id="fileInput" accept=".csv,text/csv">
@@ -280,7 +280,7 @@
     </div>
   </div>
 
-  <footer class="page-foot" id="cmpVersionFooter">Simple Compile</footer>
+  <footer class="page-foot" id="cmpVersionFooter">Compile</footer>
 </div>
 
 <!-- ============================================================================
@@ -4850,14 +4850,14 @@
   });
 
   // "Show SingLoud.org tag" - Kevin's own addition: a credit line for the two tools that
-  // actually produced this text (Simple Minutes for the log, Simple Compile for the
+  // actually produced this text (Capture for the log, Compile for the
   // readable minutes), for whoever receives a copied/shared result and wonders where it
   // came from. Implemented as a MutationObserver on previewText rather than by editing the
   // shared renderPreview() above, so it keeps working through every path that can change
   // the preview (an option checkbox, switching output type, importing a new file) without
   // needing its own copy of that logic re-applied by hand every time this file is
   // regenerated from minutes.html's shared engine.
-  var SINGLOUD_TAG_LINE = "Using Simple Minutes and Simple Compile, web applications by SingLoud.org";
+  var SINGLOUD_TAG_LINE = "Using Capture and Compile, web applications by SingLoud.org";
   var singLoudTagCheckbox = document.getElementById("m_showSingLoudTag");
   var applyingSingLoudTag = false;
   function refreshSingLoudTag(){
@@ -4878,12 +4878,14 @@
   singLoudTagCheckbox.addEventListener("change", refreshSingLoudTag);
 
   // The shared engine's own init (above) already wrote the Minutes engine/schema/library
-  // versions into this footer - appending Simple Compile's own version to that rather than
+  // versions into this footer - appending Compile's own version to that rather than
   // replacing it, since both are genuinely true and useful: which engine this build shares
-  // with the full Minutes app, and which Simple Compile release this actually is.
+  // with the full Minutes app, and which Compile release this actually is. The formal name
+  // lives here, in the runtime-rendered prefix, rather than the inert static placeholder
+  // above it - matching where Kevin chose to put it for Singing Ledger and Tunebook Registry.
   var footerEl = document.getElementById("cmpVersionFooter");
   if(footerEl && typeof SIMPLE_COMPILE_VERSION !== "undefined"){
-    footerEl.textContent = "Simple Compile " + SIMPLE_COMPILE_VERSION + " · " + footerEl.textContent;
+    footerEl.textContent = "SingLoud.org Shape-Note Simple Secretary: Compile " + SIMPLE_COMPILE_VERSION + " · " + footerEl.textContent;
   }
 })();
 </script>
