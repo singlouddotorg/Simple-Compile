@@ -74,7 +74,7 @@
   <div class="card">
     <ol>
       <li>Open <code>index.html</code> and drop in a CSV — a Simple Minutes export, or a Master CSV from Minutes.</li>
-      <li>Pick the type of output: <strong>Minutes Maker</strong>, <strong>SHMHA Minutes Book Submission</strong>, or <strong>Simple List</strong>.</li>
+      <li>Pick the type of output: <strong>Minutes Maker</strong>, <strong>Simple List</strong>, or <strong>SHMHA Minutes Book</strong>.</li>
       <li>Adjust whichever options matter for that output.</li>
       <li><strong>Copy to clipboard</strong>, or tap <strong>Share</strong> to hand the text to Mail, Messages, Notes, or whatever the device offers.</li>
     </ol>
@@ -82,16 +82,16 @@
 
   <h2>1. Open a File</h2>
   <ul>
-    <li>Click to choose a file, or drop a CSV onto the page — either a file exported from <a href="https://github.com/singlouddotorg/simple-minutes" target="_blank" rel="noopener">Simple Minutes</a>, or a Master CSV from the full <a href="https://github.com/singlouddotorg/minutes" target="_blank" rel="noopener">Minutes</a> app.</li>
+    <li>Click to choose a file, or drop a CSV onto the page — either a file exported from <a href="https://github.com/singlouddotorg/Simple-Minutes" target="_blank" rel="noopener">Simple Minutes</a>, or a Master CSV from the full <a href="https://github.com/singlouddotorg/minutes" target="_blank" rel="noopener">Minutes</a> app.</li>
     <li>Opening a second file replaces the first outright — with a confirmation if the first one had real content already showing. Refreshing the page starts completely clean; nothing carries over between visits.</li>
     <li>A file with no leader names at all (Simple Minutes' everyday output) is detected automatically, and <strong>"This singing's minutes don't name individual leaders"</strong> is checked for you. If a file has names on <em>some</em> songs but you still want them all left out, tick this by hand.</li>
   </ul>
-  <div class="note">Checking "no names" also simplifies the options below it: the SHMHA Minutes Book Submission button and the Wording &amp; Presentation section both disappear, since neither applies to a leaderless log. If SHMHA was already selected when you check it, the output switches back to Minutes Maker automatically.</div>
+  <div class="note">Checking "no names" also simplifies the options below it: the SHMHA Minutes Book button and the Wording &amp; Presentation section both disappear, since neither applies to a leaderless log. If SHMHA was already selected when you check it, the output switches back to Minutes Maker automatically.</div>
 
   <h2>2. Choose the Output</h2>
   <ul>
     <li><strong>Minutes Maker</strong> — a real narrative write-up, patterned on how published Sacred Harp minutes actually read, not one flattened formula.</li>
-    <li><strong>SHMHA Minutes Book Submission</strong> — matches the Sacred Harp Musical Heritage Association's printed submission format exactly. Always follows its own fixed rules regardless of any Minutes Maker option below it.</li>
+    <li><strong>SHMHA Minutes Book</strong> — matches the Sacred Harp Musical Heritage Association's printed submission format exactly. Always follows its own fixed rules regardless of any Minutes Maker option below it.</li>
     <li><strong>Simple List</strong> — a terse, events-only scan list: page number always shown, everything else optional.</li>
   </ul>
 
@@ -136,7 +136,7 @@
   <h2>Troubleshooting</h2>
   <h3>A file won't import, or imports with almost nothing recognized</h3>
   <p>Simple Compile shares the full Minutes app's own import logic, which is tolerant: it matches columns by name and recognizes several older or alternate column names. If a file truly imports with nothing usable, check that it has at least a Leader/Caller, Page, or Notes column under some name it recognizes.</p>
-  <h3>SHMHA Minutes Book Submission isn't showing as an option</h3>
+  <h3>SHMHA Minutes Book isn't showing as an option</h3>
   <p>Check whether "no names" is ticked — that output type is hidden for leaderless files, since SHMHA's own format assumes named leaders. Uncheck it if this file should genuinely show names.</p>
   <h3>The preview doesn't match what I expected</h3>
   <p>Check which output type is selected — Minutes Maker, SHMHA, and Simple List apply different rules entirely. Also double-check the per-song book identifier style and the summary-line checkboxes, which change the wording without changing the type.</p>
@@ -150,12 +150,12 @@
        simple-compile.html, not a separate version file, so this can't script-import it
        live the way the top-level Minutes instructions page does. Update this line by hand
        when that constant changes. -->
-  <p>Simple Compile &middot; Version 1.0.0</p>
+  <p>Simple Compile &middot; Version 1.0.1</p>
 
   <footer>
     <a href="index.html">Home</a>
     <span aria-hidden="true">&middot;</span>
-    <a href="https://github.com/singlouddotorg/simple-compile" target="_blank" rel="noopener">Source</a>
+    <a href="https://github.com/singlouddotorg/Simple-Compile" target="_blank" rel="noopener">Source</a>
   </footer>
   <p style="text-align:center;font-size:10px;color:var(--ink-faint);margin:6px 0 0;">A project of SingLoud.org</p>
 </div>

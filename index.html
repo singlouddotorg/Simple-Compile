@@ -13,7 +13,7 @@
   // shared file. Bump this by hand alongside README-DELIVERY notes for this app, the same
   // way Simple Minutes' own SIMPLE_MINUTES_VERSION is maintained.
   // 1.0.0, 2026-09-16: first public release.
-  var SIMPLE_COMPILE_VERSION = "1.0.0";
+  var SIMPLE_COMPILE_VERSION = "1.0.1";
 </script>
 <script>
   // Derived from the Tunebook Library rather than loaded directly, matching every other
@@ -176,13 +176,13 @@
     <h2 class="card-title">2. Choose the output</h2>
     <div class="pill-row">
       <button class="small preview-toggle active" id="outputTypeTraditional">Minutes Maker</button>
-      <button class="small preview-toggle" id="outputTypeSHMHA">SHMHA Minutes Book Submission</button>
       <button class="small preview-toggle" id="outputTypeSimpleList">Simple List</button>
+      <button class="small preview-toggle" id="outputTypeSHMHA">SHMHA Minutes Book</button>
     </div>
 
     <div id="minutesMakerOptions">
       <h3 class="subhead">Per-song &amp; summary options</h3>
-      <p class="card-desc" style="margin:-4px 0 12px;">Song title, ALL CAPS, and the summary line also apply to the Simple List; everything else here is Minutes-Maker-only. SHMHA Minutes Book Submission always follows its own fixed format regardless of any of these.</p>
+      <p class="card-desc" style="margin:-4px 0 12px;">Song title, ALL CAPS, and the summary line also apply to the Simple List; everything else here is Minutes-Maker-only. SHMHA Minutes Book always follows its own fixed format regardless of any of these.</p>
       <div class="grid2">
         <div class="field">
           <label style="text-transform:none;font-weight:400;letter-spacing:0;">On every song call-out:</label>
@@ -190,6 +190,7 @@
           <label class="checklabel"><input type="checkbox" id="m_mmSongTitle"> Song title</label>
           <div id="optAllSources"><label class="checklabel"><input type="checkbox" id="m_mmAllSources"> Song source, even for the default book</label></div>
           <label class="checklabel"><input type="checkbox" id="m_mmTitleCaps"> ALL CAPS for song titles</label>
+          <label class="checklabel"><input type="checkbox" id="m_mmShowTimeCalled"> Show time called</label>
         </div>
         <div class="field">
           <label style="text-transform:none;font-weight:400;letter-spacing:0;">Summary line at the end (omitted entirely if none checked):</label>
@@ -375,7 +376,7 @@
              // out in full ("(The Sacred Harp)"). One choice, not a checklist: unlike the
              // Simple List's book-identifier columns below, this sits inside running prose,
              // where showing more than one system at once reads as clutter, not data.
-             // SHMHA Minutes Book Submission's own fixed format is entirely separate and
+             // SHMHA Minutes Book's own fixed format is entirely separate and
              // never reads this - its book codes are a protocol, not a style choice.
              mmBookCodeStyle:"singloud",
              // "Show edition for The Sacred Harp" - see titleProperName's own comment for
@@ -398,6 +399,14 @@
              // defaulting this true keeps that same appearance for every singing that
              // existed before this became a checkbox.
              slShowOfficers:true,
+             // "Show time called" (Kevin's own request, 2026-09-17): reads the time each
+             // song was actually logged in Capture (the existing Time entered column,
+             // already carried on every song row) and shows it on the call-out. Shared
+             // between Minutes Maker and the Simple List, same as Song Title/ALL CAPS
+             // above - most useful for the Simple List's own scan-list format, but no
+             // reason to withhold it from Minutes Maker's prose either. Off by default so
+             // every existing export keeps reading exactly as it always has.
+             mmShowTimeCalled:false,
              defaultBook:"", bookCodes:{}, dayLocations:{},
              seriesCode:"", eventId:"", previousEventId:"" },
       roles:{ chair:"", chairTitle:"Chair", vicechair:"", vicechairTitle:"Vice-chair",
@@ -819,7 +828,7 @@
     ["m_mmSongNumber","mmSongNumber"], ["m_mmSongTitle","mmSongTitle"], ["m_mmAllSources","mmAllSources"],
     ["m_mmSingers","mmSingers"], ["m_mmLeaders","mmLeaders"], ["m_mmSongs","mmSongs"],
     ["m_mmSongIndex","mmSongIndex"], ["m_mmTitleCaps","mmTitleCaps"], ["m_mmStateDefaultBook","mmStateDefaultBook"],
-    ["m_mmNoNames","mmNoNames"], ["m_mmSHEdition","mmSHEdition"],
+    ["m_mmNoNames","mmNoNames"], ["m_mmSHEdition","mmSHEdition"], ["m_mmShowTimeCalled","mmShowTimeCalled"],
     ["m_slBookTitleProper","slBookTitleProper"], ["m_slSingLoudCode","slSingLoudCode"], ["m_slSHMHACode","slSHMHACode"],
     ["m_slTunebookList","slTunebookList"], ["m_slShowOfficers","slShowOfficers"]
   ];
@@ -2098,7 +2107,7 @@
       if(!m.field) return;
       var parts = m.field.split(".");
       var META_HYDRATE_KEYS = ["ordinal","eventType","outputType","recurringDate","openingStyle","presidingTitle","prayerStyle","closingPrayerStyle","host","present","defaultBook","books","suiteVersion","mmBookCodeStyle"];
-      var META_BOOLEAN_KEYS = ["mmSongNumber","mmSongTitle","mmAllSources","mmSingers","mmLeaders","mmSongs","mmSongIndex","mmTitleCaps","mmStateDefaultBook","mmNoNames","mmSHEdition","slBookTitleProper","slSingLoudCode","slSHMHACode","slTunebookList","slShowOfficers"];
+      var META_BOOLEAN_KEYS = ["mmSongNumber","mmSongTitle","mmAllSources","mmSingers","mmLeaders","mmSongs","mmSongIndex","mmTitleCaps","mmStateDefaultBook","mmNoNames","mmSHEdition","mmShowTimeCalled","slBookTitleProper","slSingLoudCode","slSHMHACode","slTunebookList","slShowOfficers"];
       if(parts[0] === "meta" && META_BOOLEAN_KEYS.indexOf(parts[1]) !== -1){
         state.meta[parts[1]] = (m.value === "true"); metadataHydrated++;
         // A meta.mmNoNames row in the file - either value - is a decision already made
@@ -3265,7 +3274,12 @@
     // recess/lunch re-entry sentence, so none of these should also show up as a raw
     // bracketed tag.
     var tagNote = (row.tag && !isMemorialTag(row.tag) && row.tag !== "Closing" && row.tag !== "Call Back" && row.tag !== "Singing School" && !forceSuppressNote) ? " [" + row.tag + "]" : "";
-    return loc + bookTag + dedication + tagNote;
+    // "Show time called" (Kevin's own request, 2026-09-17) - Minutes Maker only, reading
+    // the same Time entered value already carried on every row from Capture. SHMHA's own
+    // fixed submission format never reads this, same as every other Minutes-Maker-only
+    // style choice above.
+    var timeCalled = (mode === "singloud" && state.meta.mmShowTimeCalled && row.timeEntered) ? (" at " + row.timeEntered) : "";
+    return loc + timeCalled + bookTag + dedication + tagNote;
   }
 
   // scans forward from startIdx over song rows (not marker/Memorial/Closing/Call Back),
@@ -3853,6 +3867,10 @@
         bits.push((code && shmhaCodeFor(code)) || "\u2014");
       }
     }
+    // "Show time called" (Kevin's own request, 2026-09-17), shared with Minutes Maker
+    // above - the same Time entered value already carried on every row from Capture. Its
+    // own trailing column, since this list's columns are tab-separated data, not prose.
+    if(meta.mmShowTimeCalled && s.timeEntered) bits.push(s.timeEntered);
     return bits;
   }
 
@@ -4496,6 +4514,7 @@
     if(state.meta.mmTitleCaps) metaRow("meta.mmTitleCaps", "true");
     if(state.meta.mmStateDefaultBook === false) metaRow("meta.mmStateDefaultBook", "false");
     if(state.meta.mmBookCodeStyle && state.meta.mmBookCodeStyle !== "singloud") metaRow("meta.mmBookCodeStyle", state.meta.mmBookCodeStyle);
+    if(state.meta.mmShowTimeCalled) metaRow("meta.mmShowTimeCalled", "true");
     if(state.meta.slBookTitleProper) metaRow("meta.slBookTitleProper", "true");
     if(state.meta.slSingLoudCode === false) metaRow("meta.slSingLoudCode", "false");
     if(state.meta.slSHMHACode) metaRow("meta.slSHMHACode", "true");
